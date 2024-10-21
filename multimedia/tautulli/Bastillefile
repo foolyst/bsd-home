@@ -1,0 +1,19 @@
+###############################
+# This is a tempalte for BastilleBSD to install [Tautulli](https://github.com/Tautulli/Tautulli/wiki/Installation#freebsd--truenas)
+# Most of the steps are the same as noted in the Freebsd installation on the github except:
+#   - we add in wget
+#   - We then use wget to add in the service file to plce the file in the correct location.
+#
+###############################
+PKG python py311-setuptools py311-sqlite3 py311-openssl py311-pycryptodomex security/ca_root_nss git-lite
+PKG wget
+CMD cd /usr/local/share
+CMD git clone https://github.com/Tautulli/Tautulli.git
+CMD pw useradd -n tautulli -c "Tautulli" -s /sbin/nologin -w no
+CMD chown -R tautulli:tautulli Tautulli
+CMD mkdir -p /usr/local/etc/rc.d
+CMD wget -O /usr/local/etc/rc.d/tautulli https://raw.githubusercontent.com/Tautulli/Tautulli/master/init-scripts/init.freebsd
+SYSRC tautulli_user=tautulli
+SYSRC tautulli_enable=YES
+SERVICE tautulli start
+RDR tcp 8181 8181
