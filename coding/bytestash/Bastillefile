@@ -5,7 +5,7 @@
 ###############################
 PKG git-lite node18-18.20.4 npm-node18-10.8.3
 CMD npm install -g pnpm
-CMD wget https://github.com/foolyst/bsd-home/coding/bytestash/install.sh
+CMD wget https://github.com/foolyst/bsd-home/blob/main/coding/bytestash/install.sh
 CMD chmod install.sh
 CMD ./install.sh
 RDR tcp 5000 5000
