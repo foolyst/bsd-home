@@ -3,9 +3,9 @@
 # The steps for install were taken from the Dockerfile for how to handle the installation
 #
 ###############################
-PKG git-lite node18-18.20.4 npm-node18-10.8.3
+PKG git-lite node18-18.20.4 npm-node18-10.8.3 wget
 CMD npm install -g pnpm
 CMD wget https://github.com/foolyst/bsd-home/blob/main/coding/bytestash/install.sh
-CMD chmod install.sh
+CMD chmod +x install.sh
 CMD ./install.sh
 RDR tcp 5000 5000
